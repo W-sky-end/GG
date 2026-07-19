@@ -1,0 +1,34 @@
+[
+  {
+    "id": "forest_entrance",
+    "name": "Опушка леса",
+    "description": "Вы стоите на опушке тёмного леса. Тропа уходит вглубь чащи.",
+    "nextLocationIds": ["forest_deep", "riverside"],
+    "possibleEffects": [],
+    "possibleMonsters": []
+  },
+  {
+    "id": "forest_deep",
+    "name": "Глубокий лес",
+    "description": "Деревья смыкаются над головой, почти не пропуская свет.",
+    "nextLocationIds": ["graveyard_entrance"],
+    "possibleEffects": ["-1 accuracy (плохая видимость)"],
+    "possibleMonsters": ["wolf"]
+  },
+  {
+    "id": "riverside",
+    "name": "Берег реки",
+    "description": "Спокойная река несёт свои воды мимо старых валунов.",
+    "nextLocationIds": ["graveyard_entrance"],
+    "possibleEffects": ["+2 HP (можно попить воды)"],
+    "possibleMonsters": []
+  },
+  {
+    "id": "graveyard_entrance",
+    "name": "Вход на кладбище",
+    "description": "Покосившиеся кресты и запах сырой земли встречают вас.",
+    "nextLocationIds": [],
+    "possibleEffects": ["-3 HP (проклятие)", "+10 gold (найден клад)"],
+    "possibleMonsters": ["zombie", "skeleton"]
+  }
+]

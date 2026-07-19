@@ -1,7 +1,6 @@
-package dungeonbot;
+package dungeonbot.bot;
 
 import org.telegram.telegrambots.longpolling.TelegramBotsLongPollingApplication;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
 import java.io.InputStream;
