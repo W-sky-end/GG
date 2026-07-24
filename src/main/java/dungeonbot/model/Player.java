@@ -1,36 +1,35 @@
 package dungeonbot.model;
 
+import dungeonbot.system.CombatSystem;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
-    private String name;
+public class Player extends Combatant {
     private int level = 1;
     private List<String> inventory; //todo
     private int currentGold = 0;
     private int currentXP = 0;
-    private int currentHP;
+    private int maxHP;
 
-    private int vitality = 2;
-    private int intelligence = 2;
-    private int strength = 2;
-    private int dexterity = 2;
+
+    private int vitality;
+    private int intelligence;
+    private int strength;
+    private int dexterity;
 
     public Player(String name) {
-        this.name = name;
+        super(name);
         this.level = 1;
         this.inventory = new ArrayList<>();
         this.currentGold = 0;
         this.currentXP = 0;
-        this.vitality = 2;
+        this.vitality = 20; //todo убрать 20 после того как появится Armor
         this.intelligence = 2;
-        this.strength = 2;
+        this.strength = 20; //todo убрать 20 после того как появится Weapon
         this.dexterity = 2;
-        this.currentHP = vitality * 10;
-    }
-
-    public String getName() {
-        return name;
+        this.maxHP = vitality * 10;
+        this.currentHP = maxHP;
     }
 
     public int getLevel() {
@@ -45,9 +44,7 @@ public class Player {
         return currentXP;
     }
 
-    public int getCurrentHP() {
-        return currentHP;
-    }
+    public int getCurrentHP() {return currentHP;}
 
     public int getVitality() {
         return vitality;
@@ -74,5 +71,13 @@ public class Player {
     }
     public int getMaxHp() {
         return vitality * 10;
+    }
+    // TODO: временная заглушка атаки для теста боя, убрать когда появится Weapon
+    public int getAttackModifier() {
+        return strength / 2;
+    }
+    // TODO: временная заглушка защиты для теста боя
+    public int getDefenseModifier() {
+        return vitality / 2;
     }
 }
