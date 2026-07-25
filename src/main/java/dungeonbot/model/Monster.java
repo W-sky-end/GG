@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Monster extends Combatant {
     private int damage;
-    private int currentHP;
     private int maxHP;
     private int armorClass;
     private int dropXP;   //todo
@@ -45,5 +44,8 @@ public class Monster extends Combatant {
 
     public List<String> getDrop() {
         return drop;
+    }
+    public int getMaxHP() {
+        return maxHP;
     }
 }

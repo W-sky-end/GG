@@ -24,9 +24,9 @@ public class Player extends Combatant {
         this.inventory = new ArrayList<>();
         this.currentGold = 0;
         this.currentXP = 0;
-        this.vitality = 20; //todo убрать 20 после того как появится Armor
+        this.vitality = 2;
         this.intelligence = 2;
-        this.strength = 20; //todo убрать 20 после того как появится Weapon
+        this.strength = 2;
         this.dexterity = 2;
         this.maxHP = vitality * 10;
         this.currentHP = maxHP;
@@ -65,6 +65,9 @@ public class Player extends Combatant {
     public List<String> getInventory() {
         return inventory;
     }
+
+    public int getMaxHP() {return maxHP;}
+
     // TODO: временный метод для ручного тестирования, удалить когда появится нормальная механика магазина
     public void debugAddGold(int amount) {
         this.currentGold += amount;

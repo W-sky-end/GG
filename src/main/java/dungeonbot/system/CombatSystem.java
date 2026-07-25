@@ -6,12 +6,18 @@ public class CombatSystem {
     public CombatSystem(Dice dice) {
         this.dice = dice;
     }
-    public boolean isHit ( int attackModifier, int defenceModifier ) {
+    public boolean isHit ( int attackModifier, int enemyDefenceModifier ) {
         int roll = dice.rollDice();
-        return roll + attackModifier - defenceModifier >= 0;
+        return roll + attackModifier - enemyDefenceModifier >= 0;
     }
     public int calculateDamage(int attackDamageModifier){
         int roll = dice.rollDice();
         return roll + attackDamageModifier;
+    }
+    public int performAttack(int attackModifier , int enemyDefence){
+        if ( isHit(attackModifier,enemyDefence)){
+            return calculateDamage(attackModifier);
+        }
+        return 0;
     }
 }
