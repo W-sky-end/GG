@@ -1,42 +1,35 @@
 package dungeonbot.bot;
 
-import dungeonbot.model.Monster;
-import dungeonbot.model.Player;
-import dungeonbot.system.CombatSystem;
-import dungeonbot.system.Dice;
+import dungeonbot.model.*;
+import dungeonbot.system.EncounterService;
 import org.telegram.telegrambots.longpolling.TelegramBotsLongPollingApplication;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
+import java.util.Optional;
 import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         //********************ТЕСТ*******************
-        Player player = new Player("TestGuy");
-        Monster monster = new Monster("Zombie", 1, 50, 5, 1, 1);
-        Dice dice = new Dice();
-        CombatSystem combatSystem = new CombatSystem(dice);
+        MonsterRepository monsterRepository = new MonsterRepository();
+        Monster zombie = monsterRepository.getByName("Zombie");
+        LocationRepository locationRepository = new LocationRepository();
 
-        boolean run = true;
-        while (run) {
-            if (player.isAlive()) {
-                int battle = combatSystem.performAttack(player.getAttackModifier(), monster.getArmorClass());
-                monster.takeDamage(battle);
-                System.out.println(player.getName() + " attacks " + monster.getName() + " for " + battle +
-                        " | " + monster.getName() + " HP: " + monster.getCurrentHP() + "/" + monster.getMaxHP());
-            } else {
-                run = false;
-            }
-            if (run && monster.isAlive()) {
-                int battle = combatSystem.performAttack(monster.getDamage(), player.getDefenseModifier());
-                player.takeDamage(battle);
-                System.out.println(monster.getName() + " attacks " + player.getName() + " for " + battle +
-                        " | " + player.getName() + " HP: " + player.getCurrentHP() + "/" + player.getMaxHP());
-            } else {
-                run = false;
-            }
+        EncounterService encounterService = new EncounterService(monsterRepository);
+        Location graveyard = locationRepository.getById("graveyard_entrance");
+        System.out.println("Локация: " + graveyard.getName() + ", шанс встречи: " + graveyard.getEncounterChance());
+        for (int i = 0; i < 1000; i++) {
+        Optional<Monster> encounter = encounterService.resolveEncounter(
+                graveyard.getEncounterChance(),
+                graveyard.getPossibleMonsters()
+        );
+
+        if (encounter.isPresent()) {
+            System.out.println("Встречен монстр: " + encounter.get().getName());
+        } else {
+            System.out.println("Монстров не встречено.");
+        }
         }
         //********************КОНЕЦ ТЕСТА*******************
         String botToken = loadBotToken();

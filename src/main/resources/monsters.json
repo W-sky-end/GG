@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Zombie",
+    "damage": 2,
+    "maxHP": 20,
+    "armorClass": 8,
+    "lootTable": {
+      "expReward": 10,
+      "minGold": 1,
+      "maxGold": 2,
+      "possibleItems": [
+        {
+          "itemId": "rusty_sword",
+          "dropChance": 0.15
+        },
+        {
+          "itemId": "bone",
+          "dropChance": 0.5
+        }
+      ]
+    }
+  }
+]

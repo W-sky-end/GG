@@ -5,7 +5,8 @@
     "description": "Вы стоите на опушке тёмного леса. Тропа уходит вглубь чащи.",
     "nextLocationIds": ["forest_deep", "riverside"],
     "possibleEffects": [],
-    "possibleMonsters": []
+    "possibleMonsters": [],
+    "encounterChance": 20
   },
   {
     "id": "forest_deep",
@@ -13,7 +14,8 @@
     "description": "Деревья смыкаются над головой, почти не пропуская свет.",
     "nextLocationIds": ["graveyard_entrance"],
     "possibleEffects": ["-1 accuracy (плохая видимость)"],
-    "possibleMonsters": ["wolf"]
+    "possibleMonsters": ["wolf"],
+    "encounterChance": 60
   },
   {
     "id": "riverside",
@@ -21,7 +23,8 @@
     "description": "Спокойная река несёт свои воды мимо старых валунов.",
     "nextLocationIds": ["graveyard_entrance"],
     "possibleEffects": ["+2 HP (можно попить воды)"],
-    "possibleMonsters": []
+    "possibleMonsters": [],
+    "encounterChance": 40
   },
   {
     "id": "graveyard_entrance",
@@ -29,6 +32,7 @@
     "description": "Покосившиеся кресты и запах сырой земли встречают вас.",
     "nextLocationIds": [],
     "possibleEffects": ["-3 HP (проклятие)", "+10 gold (найден клад)"],
-    "possibleMonsters": ["zombie", "skeleton"]
+    "possibleMonsters": ["Zombie"],
+    "encounterChance" : 80
   }
 ]
